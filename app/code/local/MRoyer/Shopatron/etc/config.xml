@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+  <global>
+    <models>
+        <mroyershopatron>
+             <class>MRoyer_Shopatron_Model</class>
+        </mroyershopatron>
+    </models>
+    <events>
+      <controller_action_predispatch_checkout_onepage_index>
+        <observers>
+          <MRoyer_Shopatron_Observer>
+            <type>singleton</type>
+            <class>MRoyer_Shopatron_Model_Observer</class>
+            <method>SendRPC</method>
+          </MRoyer_Shopatron_Observer>
+        </observers>
+      </controller_action_predispatch_checkout_onepage_index>     
+    </events>
+  </global>
+</config>
