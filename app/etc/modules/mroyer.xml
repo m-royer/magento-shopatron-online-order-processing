@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <MRoyer_Shopatron>
+      <codePool>local</codePool>
+      <active>true</active>
+    </MRoyer_Shopatron>
+  </modules>
+</config>
