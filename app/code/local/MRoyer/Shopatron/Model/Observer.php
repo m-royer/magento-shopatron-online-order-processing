@@ -107,9 +107,6 @@ class MRoyer_Shopatron_Model_Observer
         if($special == true) {
           $actual_price = $product->getData('special_price');
         }
-        
-        // Delete the item from the cart
-        Mage::getSingleton('checkout/cart')->removeItem($item->getId());
       }
       
       // Create item struct
@@ -140,13 +137,11 @@ class MRoyer_Shopatron_Model_Observer
       } // end if($itemOptions)
       
       $itemArray[$itemIncrementText] = new xmlrpcval($itemAttr,"struct");
+      // Delete the item from the cart
+      Mage::getSingleton('checkout/cart')->removeItem($item->getId());
     } // end foreach
     
     $itemArray["num_items"] = $itemIncrement;
-    
-    // Finally Empty the cart (this is important)
-    //$quote->setIsActive(false);
-    //$quote->delete();
     
     return $itemArray;
   }
