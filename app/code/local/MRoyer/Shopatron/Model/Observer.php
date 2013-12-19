@@ -7,8 +7,11 @@ class MRoyer_Shopatron_Model_Observer
   {
     // Set debug on for now.
     $this->_sDebug = false;
+    // Insert your Manufacturer ID and Category ID
     $this->mfg_id = "00000.0";
+    // This should be your site root URL. This is used for debugging. 
     $this->_domain = "http://your.magento-installation.com/";
+    // A log message so you know where to put your XML-RPC package
     Mage::log("Document Root: " . $_SERVER['DOCUMENT_ROOT']);
     include $_SERVER['DOCUMENT_ROOT'].'/XML-RPC/3.0.0/xmlrpc.inc';
     include $_SERVER['DOCUMENT_ROOT'].'/XML-RPC/compat/is_a.php';
@@ -138,7 +141,8 @@ class MRoyer_Shopatron_Model_Observer
       
       $itemArray[$itemIncrementText] = new xmlrpcval($itemAttr,"struct");
       // Delete the item from the cart
-      Mage::getSingleton('checkout/cart')->removeItem($item->getId());
+      // I was unable to get this working
+      //Mage::getSingleton('checkout/cart')->removeItem($item->getId());
     } // end foreach
     
     $itemArray["num_items"] = $itemIncrement;
@@ -225,7 +229,7 @@ class MRoyer_Shopatron_Model_Observer
   private function SaveOrder($orderID) {
     // If you wanted to save any information, you would do it here. 
     // All I do here is save the now empty cart
-    Mage::helper('checkout/cart')->getCart()->save();
+    //Mage::helper('checkout/cart')->getCart()->save();
   }
   
   private function RedirectMe($newURL) {
